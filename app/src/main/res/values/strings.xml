@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">Baking App</string>
+    <string name="introduce">Choose a food</string>
+    <string name="ingredients">Ingredients</string>
+    <string name="steps">Steps</string>
+    <string name="step">Step</string>
+    <string name="noConnectionToInternet">No connection to internet</string>
+    <string name="noInternet">Cannot access to the Internet</string>
+
 </resources>

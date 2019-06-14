@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background">
+
+<LinearLayout
+    android:id="@+id/linear_layout_how_to_make_p"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".phone.HowToMake_PHONE">
+
+
+
+
+    <TextView
+        android:id="@+id/ingredients_text_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:text="@string/ingredients"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:padding="5dp"
+        android:layout_margin="8dp"
+        android:background="@color/colorPrimary"
+        android:textColor="@color/White"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerview_ingredients"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+
+<!--<GridLayout-->
+    <!--android:id="@+id/grid_id"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:columnCount="2"-->
+    <!--android:useDefaultMargins = "true">-->
+
+<!--</GridLayout>-->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/colorPrimary"
+        android:layout_margin="4dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:background="@color/colorPrimary"
+        android:layout_margin="1dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/colorPrimary"
+        android:layout_margin="4dp"/>
+    <TextView
+        android:id="@+id/steps_text_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:text="@string/steps"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:padding="5dp"
+        android:layout_margin="5dp"
+        android:textColor="@color/White"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/colorPrimary"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerview_detail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+</LinearLayout>
+</ScrollView>
