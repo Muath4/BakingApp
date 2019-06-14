@@ -6,5 +6,10 @@
     <string name="step">Step</string>
     <string name="noConnectionToInternet">No connection to internet</string>
     <string name="noInternet">Cannot access to the Internet</string>
+    <string name="noVideo">No video to show</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+    <string name="firstStep">This is the first step</string>
+    <string name="lastStep">This is the last step</string>
 
 </resources>

@@ -53,7 +53,7 @@ public class MainFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                recyclerViewOfIngredients = activity.findViewById(R.id.recyclerview_ingredients);
+                recyclerViewOfIngredients = activity.findViewById(R.id.recycler_view_ingredients);
                 Log.i("*****", String.valueOf(recipe));
                 adapterOfIngredients = new AdapterOfIngredients(activity, recipe);
                 recyclerViewOfIngredients.setLayoutManager(new GridLayoutManager(activity, 3));

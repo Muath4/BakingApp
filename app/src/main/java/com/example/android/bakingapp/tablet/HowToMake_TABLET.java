@@ -30,7 +30,7 @@ public class HowToMake_TABLET extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_how_to_make__tablet);
         descriptionTextView = findViewById(R.id.text_of_description);
-        recyclerViewOfIngredients = findViewById(R.id.recyclerview_ingredients);
+        recyclerViewOfIngredients = findViewById(R.id.recycler_view_ingredients);
 
         this.getWindow().setStatusBarColor(ContextCompat.getColor(this, R.color.notificationBar));
         try {

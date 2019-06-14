@@ -23,7 +23,7 @@
         android:visibility="invisible"/>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerview_ingredients"
+        android:id="@+id/recycler_view_ingredients"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 

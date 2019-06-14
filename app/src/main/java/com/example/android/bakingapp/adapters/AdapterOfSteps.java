@@ -22,10 +22,11 @@ public class AdapterOfSteps extends RecyclerView.Adapter<AdapterOfSteps.ViewHold
 
     private Context context;
     private Recipe recipe;
-    public static final String KEY_OF_INTENT = "keyOfClickedRecipe";
+    public static final String KEY_OF_INTENT_OF_CLICKED_STEP = "keyOfClickedRecipe";
+    public static final String KEY_OF_INTENT_RECIPE = "keyOfTheStepsOfRecipe";
     Activity activity;
 
-    public AdapterOfSteps(Context context, Recipe recipe){
+    public AdapterOfSteps(Context context, Recipe recipe) {
         this.context = context;
         this.recipe = recipe;
         activity = (Activity) context;
@@ -40,19 +41,19 @@ public class AdapterOfSteps extends RecyclerView.Adapter<AdapterOfSteps.ViewHold
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder,final int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
         holder.textView.setText(recipe.getSteps().get(position).getShortDescription());
         holder.textView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(MainActivity.isPhone){
-                Intent intent = new Intent(context, StepDetail_PHONE.class);
-                intent.putExtra(KEY_OF_INTENT,recipe.getSteps().get(position));
-                context.startActivity(intent);
-            }
-            else{
+                if (MainActivity.isPhone) {
+                    Intent intent = new Intent(context, StepDetail_PHONE.class);
+                    intent.putExtra(KEY_OF_INTENT_RECIPE, recipe);
+                    intent.putExtra(KEY_OF_INTENT_OF_CLICKED_STEP, recipe.getSteps().get(position));
+                    context.startActivity(intent);
+                } else {
 
-                HowToMake_TABLET.setTextToSecScreen(recipe.getSteps().get(position).getDescription());
+                    HowToMake_TABLET.setTextToSecScreen(recipe.getSteps().get(position).getDescription());
                 }
             }
         });

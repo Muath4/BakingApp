@@ -1,10 +1,8 @@
 package com.example.android.bakingapp.phone;
 
 import android.os.Bundle;
-import android.util.TypedValue;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -44,7 +42,7 @@ public class HowToMake_PHONE extends AppCompatActivity {
         recyclerViewOfSteps.setAdapter(adapterOfSteps);
 
 
-        recyclerViewOfIngredients = findViewById(R.id.recyclerview_ingredients);
+        recyclerViewOfIngredients = findViewById(R.id.recycler_view_ingredients);
         recyclerViewOfIngredients.setLayoutManager(new GridLayoutManager(this, 2));
         adapterOfIngredients = new AdapterOfIngredients(this, recipe);
         final ViewGroup.LayoutParams params = recyclerViewOfIngredients.getLayoutParams();
