@@ -1,5 +1,7 @@
 package com.example.android.bakingapp;
 
+import android.content.Context;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.view.Window;
@@ -30,6 +32,8 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+
+
 }
 
 

@@ -11,20 +11,43 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent" />
 
-    <TextView
-        android:id="@+id/text_of_description"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:background="@color/colorPrimary"
-        android:padding="5dp"
-        android:textSize="20sp"
-        android:textColor="@color/White"
-        android:visibility="invisible"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_marginBottom="20dp">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_view_ingredients"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        <TextView
+            android:id="@+id/no_video_to_show"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:text="@string/noVideo"
+            android:background="@color/colorPrimary"
+            android:gravity="center_horizontal"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textColor="@color/White"/>
+
+        <com.google.android.exoplayer2.ui.PlayerView
+            android:id="@+id/player_view"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp" />
+
+        <TextView
+            android:id="@+id/text_of_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimary"
+            android:textSize="20sp"
+            android:textColor="@color/White"
+            android:visibility="invisible"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_view_ingredients"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
+
 
 </LinearLayout>

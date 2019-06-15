@@ -63,8 +63,7 @@ public class MainFragment extends Fragment {
                     HowToMake_TABLET.originHeight = HowToMake_TABLET.params.height;
                     isGetOriginalHeight = true;
                 }
-                Log.i("********", String.valueOf(HowToMake_TABLET.params.height));
-                HowToMake_TABLET.setRecyclerToSecScreen();
+                HowToMake_TABLET.setRecyclerOfIngredientsToSecScreen();
 
             }
         });
