@@ -1,8 +1,12 @@
 package com.example.android.bakingapp.phone;
 
+import android.appwidget.AppWidgetManager;
+import android.content.ComponentName;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,6 +16,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.android.bakingapp.R;
+import com.example.android.bakingapp.WidgetProvider;
+import com.example.android.bakingapp.WidgetService;
 import com.example.android.bakingapp.adapters.AdapterOfIngredients;
 import com.example.android.bakingapp.adapters.AdapterOfSteps;
 import com.example.android.bakingapp.adapters.RecyclerAdapter;
@@ -27,6 +33,8 @@ public class HowToMake_PHONE extends AppCompatActivity {
     public static boolean isIngredientsShow = false;
     private int originHight;
     private TextView stepsTextView;
+    public static String ingredients;
+    private Button buttonAddIngredientsToWidget;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +48,14 @@ public class HowToMake_PHONE extends AppCompatActivity {
         adapterOfSteps = new AdapterOfSteps(this, recipe);
         recyclerViewOfSteps.setLayoutManager(new LinearLayoutManager(this));
         recyclerViewOfSteps.setAdapter(adapterOfSteps);
+        buttonAddIngredientsToWidget = findViewById(R.id.add_to_widget);
 
+        buttonAddIngredientsToWidget.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setIngredientsToWidget();
+            }
+        });
 
         recyclerViewOfIngredients = findViewById(R.id.recycler_view_ingredients);
         recyclerViewOfIngredients.setLayoutManager(new GridLayoutManager(this, 2));
@@ -63,6 +78,7 @@ public class HowToMake_PHONE extends AppCompatActivity {
                     recyclerViewOfIngredients.setLayoutParams(params);
                     isIngredientsShow = true;
                     recyclerViewOfIngredients.setAdapter(adapterOfIngredients);
+                    //***Log.i("****",AdapterOfIngredients.ingredients);
                     //recyclerViewOfSteps.setVisibility(View.INVISIBLE);
 
                 }
@@ -84,6 +100,15 @@ public class HowToMake_PHONE extends AppCompatActivity {
                 }
             }
         });
+    }
+
+
+    private void setIngredientsToWidget(){
+        ingredients = "";
+        for (int i = 0; i < recipe.getIngredients().size(); i++) {
+            ingredients +=recipe.getIngredients().get(i).getIngredient() + " - " + recipe.getIngredients().get(i).getQuantity() + " " + recipe.getIngredients().get(i).getMeasure()+"\n";
+        }
+        WidgetService.updateWidget(this);
     }
 
 

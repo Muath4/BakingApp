@@ -71,8 +71,7 @@ public class StepDetail_PHONE extends AppCompatActivity {
         playerView.setLayoutParams(new LinearLayout.LayoutParams(0, 0));
         if (isConnect()) {
             if (!step.getVideoURL().equalsIgnoreCase("")) {
-                playerView.setVisibility(View.VISIBLE);
-                playerView.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+                playerView.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 250));
                 noVideoText.setLayoutParams(new LinearLayout.LayoutParams(0, 0));
                 settingThePlayer();
             } else {
@@ -99,8 +98,7 @@ public class StepDetail_PHONE extends AppCompatActivity {
         player.addListener(new Player.EventListener() {
             @Override
             public void onPlayerStateChanged(boolean playWhenReady, int playbackState) {
-                playerView.setVisibility(View.VISIBLE);
-            }
+                playerView.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));            }
         });
 
     }
@@ -156,7 +154,6 @@ public class StepDetail_PHONE extends AppCompatActivity {
                 }
             }
         });
-
 
     }
 

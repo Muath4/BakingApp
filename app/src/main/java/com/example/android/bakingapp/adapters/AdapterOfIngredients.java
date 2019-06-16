@@ -2,11 +2,9 @@ package com.example.android.bakingapp.adapters;
 
 import android.app.Activity;
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -14,10 +12,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.android.bakingapp.R;
 import com.example.android.bakingapp.getdata.Recipe;
-import com.example.android.bakingapp.phone.HowToMake_PHONE;
 
 public class AdapterOfIngredients extends RecyclerView.Adapter<AdapterOfIngredients.ViewHolder> {
-
     private Recipe recipe;
     public static final String KEY_OF_INTENT = "keyOfClickedRecipe";
     Activity activity;
@@ -37,9 +33,8 @@ public class AdapterOfIngredients extends RecyclerView.Adapter<AdapterOfIngredie
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
-
-            holder.textView.setText(recipe.getIngredients().get(position).getIngredient() + "\n" + recipe.getIngredients().get(position).getQuantity() + " " + recipe.getIngredients().get(position).getMeasure());
-
+        String ingredient = recipe.getIngredients().get(position).getIngredient() + "\n" + recipe.getIngredients().get(position).getQuantity() + " " + recipe.getIngredients().get(position).getMeasure();
+        holder.textView.setText(ingredient);
     }
 
     @Override

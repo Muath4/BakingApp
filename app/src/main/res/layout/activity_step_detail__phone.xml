@@ -13,6 +13,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_alignParentTop="true">
+
         <TextView
             android:id="@+id/no_video_to_show"
             android:layout_width="match_parent"
@@ -27,8 +28,8 @@
 
         <com.google.android.exoplayer2.ui.PlayerView
             android:id="@+id/player_view"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_width="0dp"
+            android:layout_height="0dp" />
 
         <TextView
             android:id="@+id/text_of_description"
@@ -39,15 +40,14 @@
             android:padding="5dp"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             android:textColor="@color/White" />
-
     </LinearLayout>
 
-
-
-    <LinearLayout
+    <GridLayout
         android:layout_alignParentBottom="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:gravity="center"
+        android:numColumns="2"
         android:orientation="horizontal">
 
         <TextView
@@ -57,8 +57,9 @@
             android:layout_margin="10dp"
             android:text="@string/next"
             android:background="@color/colorPrimary"
-            android:padding="5dp"
+            android:padding="7dp"
             android:gravity="center_horizontal"
+            android:layout_gravity="start"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             android:textColor="@color/White"/>
 
@@ -69,11 +70,11 @@
             android:layout_margin="10dp"
             android:text="@string/previous"
             android:background="@color/colorPrimary"
-            android:padding="5dp"
+            android:padding="7dp"
             android:gravity="center_horizontal"
+            android:layout_gravity="end"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             android:textColor="@color/White"/>
-    </LinearLayout>
-
+    </GridLayout>
 
 </RelativeLayout>

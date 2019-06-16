@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -16,10 +17,12 @@ import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.android.bakingapp.R;
+import com.example.android.bakingapp.WidgetService;
 import com.example.android.bakingapp.adapters.AdapterOfIngredients;
 import com.example.android.bakingapp.adapters.AdapterOfSteps;
 import com.example.android.bakingapp.adapters.RecyclerAdapter;
 import com.example.android.bakingapp.getdata.Recipe;
+import com.example.android.bakingapp.phone.HowToMake_PHONE;
 import com.google.android.exoplayer2.ExoPlayerFactory;
 import com.google.android.exoplayer2.Player;
 import com.google.android.exoplayer2.SimpleExoPlayer;
@@ -32,17 +35,11 @@ import com.google.android.exoplayer2.util.Util;
 
 public class HowToMake_TABLET extends AppCompatActivity {
     Recipe recipe;
-    private static Recipe.Step step;
     public static TextView descriptionTextView;
     private static RecyclerView recyclerViewOfIngredients;
-    private static AdapterOfIngredients adapterOfIngredients;
     public static int originHeight;
     public static ViewGroup.LayoutParams params;
-    static PlayerView playerView;
-    static SimpleExoPlayer player;
-    //private Recipe.Step step;
-    private TextView noVideoText;
-    private static Boolean isPlayerThere = false;
+    private Button buttonAddIngredientsToWidget;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +47,13 @@ public class HowToMake_TABLET extends AppCompatActivity {
         setContentView(R.layout.activity_how_to_make__tablet);
         descriptionTextView = findViewById(R.id.text_of_description);
         recyclerViewOfIngredients = findViewById(R.id.recycler_view_ingredients);
+        buttonAddIngredientsToWidget = findViewById(R.id.add_to_widget);
+        buttonAddIngredientsToWidget.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setIngredientsToWidget();
+            }
+        });
 
         this.getWindow().setStatusBarColor(ContextCompat.getColor(this, R.color.notificationBar));
         try {
@@ -58,7 +62,6 @@ public class HowToMake_TABLET extends AppCompatActivity {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
 
     }
 
@@ -75,73 +78,28 @@ public class HowToMake_TABLET extends AppCompatActivity {
     }
 
     static void setRecyclerOfIngredientsToSecScreen() {
-        params.height = originHeight;
+        try {
+            if (AdapterOfSteps.isPlayerThere) {
+                AdapterOfSteps.player.stop();
+            }
+            AdapterOfSteps.noVideoText.setLayoutParams(new LinearLayout.LayoutParams(0, 0));
+            AdapterOfSteps.playerView.setLayoutParams(new LinearLayout.LayoutParams(0, 0));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         recyclerViewOfIngredients.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
         descriptionTextView.setLayoutParams(new LinearLayout.LayoutParams(0, 0));
-        AdapterOfSteps.noVideoText.setLayoutParams(new LinearLayout.LayoutParams(0, 0));
-        AdapterOfSteps.playerView.setLayoutParams(new LinearLayout.LayoutParams(0, 0));
-        if (AdapterOfSteps.isPlayerThere) {
-            AdapterOfSteps.playerView.setLayoutParams(new LinearLayout.LayoutParams(0, 0));
-            AdapterOfSteps.player.stop();
+
+    }
+
+    private void setIngredientsToWidget(){
+        HowToMake_PHONE.ingredients = "";
+        for (int i = 0; i < recipe.getIngredients().size(); i++) {
+            HowToMake_PHONE.ingredients +=recipe.getIngredients().get(i).getIngredient() + " - " + recipe.getIngredients().get(i).getQuantity() + " " + recipe.getIngredients().get(i).getMeasure()+"\n";
         }
-
-
+        WidgetService.updateWidget(this);
     }
 
-
-//    private void initializePlayer() {
-
-//        playerView.setLayoutParams(new LinearLayout.LayoutParams(0, 0));
-//        if (isConnect()) {
-//            if (!step.getVideoURL().equalsIgnoreCase("")) {
-//                playerView.setVisibility(View.VISIBLE);
-//                playerView.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
-//                noVideoText.setLayoutParams(new LinearLayout.LayoutParams(0, 0));
-//                settingThePlayer();
-//            } else {
-//                isPlayerThere = false;
-//                noVideoText.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
-//            }
-//        } else {
-//            isPlayerThere = false;
-//            Toast.makeText(this, getString(R.string.noInternet), Toast.LENGTH_LONG).show();
-//        }
-//    }
-//
-//    private void settingThePlayer() {
-//        isPlayerThere = true;
-//        player = ExoPlayerFactory.newSimpleInstance(this);
-//        player.setPlayWhenReady(true);
-//
-//        playerView.setPlayer(player);
-//        DataSource.Factory dataSourceFactory = new DefaultDataSourceFactory(this,
-//                Util.getUserAgent(this, getString(R.string.app_name)));
-//        MediaSource videoSource = new ProgressiveMediaSource.Factory(dataSourceFactory)
-//                .createMediaSource(Uri.parse(step.getVideoURL()));
-//        player.prepare(videoSource);
-//        player.addListener(new Player.EventListener() {
-//            @Override
-//            public void onPlayerStateChanged(boolean playWhenReady, int playbackState) {
-//                playerView.setVisibility(View.VISIBLE);
-//            }
-//        });
-//
-//    }
-
-
-    public static void identifyTheStep(Recipe.Step s) {
-        step = s;
-
-    }
-
-
-    private boolean isConnect() {
-        ConnectivityManager cm =
-                (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
-
-        return cm.getActiveNetworkInfo() != null &&
-                cm.getActiveNetworkInfo().isConnectedOrConnecting();
-    }
 
 
 }

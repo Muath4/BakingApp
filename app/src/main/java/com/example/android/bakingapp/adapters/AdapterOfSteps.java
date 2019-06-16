@@ -40,7 +40,6 @@ public class AdapterOfSteps extends RecyclerView.Adapter<AdapterOfSteps.ViewHold
     public static final String KEY_OF_INTENT_RECIPE = "keyOfTheStepsOfRecipe";
     public static PlayerView playerView;
     public static SimpleExoPlayer player;
-    //private Recipe.Step step;
     public static TextView noVideoText;
     public static Boolean isPlayerThere = false;
 

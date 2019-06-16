@@ -49,6 +49,10 @@ public class MainFragment extends Fragment {
 
         recipe = activity.getIntent().getExtras().getParcelable(RecyclerAdapter.KEY_RECIPE);
         ingredientsTextView = rootView.findViewById(R.id.ingredients_text_view);
+        recyclerView = rootView.findViewById(R.id.main_recycler_id);
+        adapterOfSteps = new AdapterOfSteps(activity, recipe);
+        recyclerView.setLayoutManager(new LinearLayoutManager(activity));
+        recyclerView.setAdapter(adapterOfSteps);
         ingredientsTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -68,14 +72,13 @@ public class MainFragment extends Fragment {
             }
         });
 
-        recyclerView = rootView.findViewById(R.id.main_recycler_id);
-        adapterOfSteps = new AdapterOfSteps(activity, recipe);
-        recyclerView.setLayoutManager(new LinearLayoutManager(activity));
-        recyclerView.setAdapter(adapterOfSteps);
+
 
 
         return rootView;
     }
+
+
 
 
 }

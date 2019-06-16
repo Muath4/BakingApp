@@ -7,9 +7,12 @@
     <string name="noConnectionToInternet">No connection to internet</string>
     <string name="noInternet">Cannot access to the Internet</string>
     <string name="noVideo">No video to show</string>
-    <string name="next">Next</string>
-    <string name="previous">Previous</string>
+    <string name="next">Next step</string>
+    <string name="previous">Previous step</string>
     <string name="firstStep">This is the first step</string>
     <string name="lastStep">This is the last step</string>
+    <string name="appwidget_text">Choose a food to add its ingredients here</string>
+    <string name="add_widget">Add widget</string>
+    <string name="addIngredientToWidget">Add this ingredients to widget</string>
 
 </resources>
